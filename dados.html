@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo con 6 botones</title>
+    <link rel="stylesheet" href="style.css"> <!-- Enlace al archivo CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <h1 class="title">Tiradas de Dados</h1>
+    <h2 class="subtitle">Selecciona el número de dados que quieres tirar</h2>
+
+    <!-- Contenedor principal centrado -->
+    <div class="container">
+
+        <!-- Botones y etiquetas organizados en dos filas de tres columnas -->
+        <div class="row">
+            <div class="column">
+                <p>Dado d4: <span id="etiqueta1"></span></p>
+                <input class="selector" type="number" min="0" max="10" value="1">
+            </div>
+            <div class="column">
+                <p>Dado d6: <span id="etiqueta2"></span></p>
+                <input class="selector" type="number" min="0" max="10" value="1">
+            </div>
+            <div class="column">
+                <p>Dado d8: <span id="etiqueta3"></span></p>
+                <input class="selector" type="number" min="0" max="10" value="1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <p>Dado d10: <span id="etiqueta4"></span></p>
+                <input class="selector" type="number" min="0" max="10" value="1">
+            </div>
+            <div class="column">
+                <p>Dado d12: <span id="etiqueta5"></span></p>
+                <input class="selector" type="number" min="0" max="10" value="1">
+            </div>
+            <div class="column">
+                <p>Dado d20: <span id="etiqueta6"></span></p>
+                <input class="selector" type="number" min="0" max="10" value="1">
+            </div>
+        </div>
+
+        <!-- Botón añadido al final del div container -->
+        <div>
+            <button id="botonLimpiar" class="btn">Limpiar</button>
+            <button id="botonTiradas" class="btn">Tirar dados</button>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <ul id="resultados" class="listaResultados">
+
+        </ul>
+    </div>
+
+
+    <script>
+        document.getElementById('botonTiradas').addEventListener('click', function () {
+
+            const lista = document.getElementById('resultados');
+            const resultados = [1, 2, 3, 4, 5, 6];
+            while (lista.firstChild) {
+                lista.removeChild(lista.firstChild);
+            }
+            for (let i = 0; i < resultados.length; i++) {
+                const nuevoLi = document.createElement('li');
+                nuevoLi.textContent = resultados[i];
+                lista.appendChild(nuevoLi);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
